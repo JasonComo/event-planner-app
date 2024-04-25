@@ -1,0 +1,85 @@
+{% extends 'base/index.html' %}
+
+{% block view_content %}
+    {% if event %}
+        <div class="event-data">
+            <div class="event-title">
+                <p> {{ event.title }} </p>
+            </div>
+            <div class="event-organizer">
+                <p> Organizer: {{event.organizer.first_name}} {{event.organizer.last_name}} </p>
+            </div>
+            <div class="event-location">
+                <p> Location: {{ event.location }} </p>
+            </div>
+            <div class="event-date">
+                <p> Date: {{ event.date }} </p>
+            </div>
+            <div class="event-description">
+                <p>{{ event.description }}</p>
+            </div>
+            
+            {% if request.user == event.organizer %}
+                <div class="ed">
+                    <div class="button-like" div id="edit-event">
+                        <a href="{% url 'edit_event' event.id %}">Edit Event</a>
+                    </div>
+                    <div class="button-like" div id="delete-event">
+                        <form method="post" action="{% url 'delete_event' event.id %}">
+                            {% csrf_token %}
+                            <input type="submit" value="Delete Event" onclick="return confirm('Are you sure? This action cannot be undone.');">
+                        </form>
+                    </div>
+                </div>
+            {% else %}
+            <div class="ed">
+                <div class="button-like" div id="delete-event">
+                    <form method="post" action="{% url 'leave_event' event.id %}">
+                        {% csrf_token %}
+                        <input type="submit" value="Leave Event" onclick="return confirm('Are you sure? This action cannot be undone.');">
+                    </form>
+                </div>
+            </div>           
+            {% endif %}
+        </div>
+        <div class="chat">
+            <div class="chat-title">
+                <p> Chat </p>
+            </div>
+            <div class="messages">
+                {% for message in messages %}
+                    {% if message.sender != request.user %}
+                        <div class="guest-message">
+                            <div class="guest-name">
+                                <p>{{ message.sender.first_name }} {{ message.sender.last_name }}</p>
+                            </div>
+                            <div class="guest-content">
+                                <p>{{ message.content }} {{ message.created }}</p>
+                            </div>
+                        </div>
+                    {% elif message.sender == request.user %}
+                        <div class="user-message">
+                            <div class="user-name">
+                                <p>{{ message.sender.first_name }} {{ message.sender.last_name }}</p>
+                            </div>
+                            <div class="user-content">
+                                <p>{{ message.content }} {{ message.created }}</p>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <div class="send-message">
+                <form method="post" action="{% url 'send_message' event.id %}">
+                    {% csrf_token %}
+                    <input type="text" name="message" placeholder="Type your message">
+                    <input type="submit" value="Send">
+                </form>
+            </div>
+        </div>
+    {% else %}
+        <div class="no-event">
+            <h1>No event selected</h1>
+        </div>
+    {% endif %}
+{% endblock %}

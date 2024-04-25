@@ -1,0 +1,74 @@
+{% extends 'base/index.html' %}
+{% block view_friends %}
+        <div class="add-friend">
+            <div class="friends-title">
+                <p>Friends</p>
+            </div>
+            <div class="add-friend-input">
+                <p>Add Friend</p>
+                <form method="post" class="friend-form" action="{% url 'add_friend' %}">
+                    {% csrf_token %}
+                    <input type="text" name="username" placeholder="Enter username" required>
+                    <button type="submit">Add</button>
+                    {% if form.errors.username %}
+                        <ul class="errorlist">
+                            {% for error in form.errors.username %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </form>
+            </div>
+            <div class="current-friends">
+                <p>Friends</p>
+                <ul>
+                    {% for friend in friends %}
+                        <li class="friend-item">
+                            {{ friend.first_name }} {{ friend.last_name }}
+                            <form method="post" action="{% url 'remove_friend' friend.id %}">
+                                {% csrf_token %}
+                                <input type="hidden" name="friend_id" value="{{ friend.id }}">
+                                <button type="submit" class="remove-button">Remove</button>
+                            </form>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <div class="requests">
+            <div class="request-title">
+                <p>Requests</p>
+            </div>
+            <div class="received-friend-requests">
+                <p>Received Friend Requests</p>
+                <ul>
+                {% for received_request in received_requests %}
+                    <li class="friend-item">
+                        {{ received_request.sender }}
+                        <form method="post" action="{% url 'accept_friend_request' received_request.id %}">
+                            {% csrf_token %}
+                            <button type="submit" name="action" class="accept-button" value="accept">Accept</button>
+                            <button type="submit" name="action" class="remove-button" value="decline">Decline</button>
+                        </form>
+                    </li>
+                {% endfor %}
+                </ul>
+            </div>
+            <div class="sent-friend-requests">
+                <p>Sent Friend Requests</p>
+                <ul>
+                    {% for sent_request in sent_requests %}
+                        <li class="friend-item">
+                            {{ sent_request.recipient }}
+                            <form method="post" action="{% url 'cancel_friend_request' sent_request.id %}">
+                                {% csrf_token %}
+                                <input type="hidden" name="friend_request_id" value="{{ sent_request.id }}">
+                                <button type="submit" class="remove-button">Cancel</button>
+                            </form>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}

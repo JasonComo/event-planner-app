@@ -1,0 +1,620 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+body {
+    font-size: 16px;
+    color: white;
+    background-color: #23252b;
+    margin: 0;
+}
+
+button {
+    transition: transform 0.3s ease-in-out;
+
+}
+
+button:hover {
+    transform: scale(1.05)
+}
+
+.button-like {
+    transition: transform 0.3s ease-in-out;
+}
+
+#edit-event {
+    width: 5em;
+}
+
+#delete-event input {
+    padding: 1em;
+}
+
+
+
+.button-like:hover {
+    transform: scale(1.05)
+}
+
+
+a {
+    text-decoration: none;
+    color: white;
+
+}
+
+
+.top {
+    margin-top: 2em;
+    margin-bottom: 2em;
+    color: white;
+    background-color: #23252b;
+    font-size: 1rem;
+    font-family: 'Lato', sans-serif;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.top h1 {
+    font-weight: normal;
+}
+
+#create-event,
+#friends {
+    width: 20em;
+    border-radius: 1em;
+    border: none;
+    background: rgb(60, 60, 209);
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+    text-align: center;
+}
+
+.hello {
+    margin-left: 2em;
+}
+
+#logout {
+    margin-right: 2em;
+}
+
+.left {
+    margin-left: 1em;
+    background-color: #23252b;
+    font-size: 1rem;
+    font-family: 'Lato', sans-serif;
+    width: 20%;
+}
+
+.left h1 {
+    font-weight: normal;
+}
+
+.event-invites {
+    font-family: 'Lato', sans-serif;
+    max-height: 20%;
+    overflow-y: auto;
+}
+
+.event-invites ul {
+    list-style: none;
+    padding: 0;
+}
+
+.event-invites li {
+    margin-left: 2em;
+    margin-bottom: 1.5em;
+    display: flex;
+    align-items: center;
+}
+
+.event-right {
+    padding: 0;
+    margin-left: 1em;
+    margin-right: 1em;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.event-accept-button {
+    display: block;
+    font-size: 0.75rem;
+    font-family: 'Lato';
+    background-color: green;
+    color: white;
+    padding-left: 1em;
+    padding-right: 1em;
+    height: 2em;
+    border: none;
+    border-radius: 1em;
+    cursor: pointer;
+}
+
+.event-decline-button {
+    margin-top: 1em;
+    display: block;
+    margin-right: 0em;
+    font-size: 0.75rem;
+    font-family: 'Lato';
+    background-color: rgb(209, 60, 60);
+    color: white;
+    padding-left: 1em;
+    padding-right: 1em;
+    height: 2em;
+    border: none;
+    border-radius: 1em;
+    cursor: pointer;
+}
+
+.event-invites-title {
+    margin-left: 1em;
+}
+
+.no-invites {
+    margin-left: 2em
+}
+
+.event-invites form {
+    margin-left: auto;
+}
+
+.event-invites button {
+    margin-left: 10px;
+}
+
+
+.attending-events {
+    max-height: 50%;
+    overflow-y: auto;
+}
+
+.attending-events-title {
+    margin-left: 1em;
+}
+
+.attending-events ul {
+    list-style: none;
+    padding: 0;
+}
+
+.attending-events li {
+    margin-left: 2em;
+    margin-bottom: 1.5em;
+    display: flex;
+    align-items: center;
+}
+
+.no-event-selected {
+    text-align: center;
+    color: white;
+    font-size: 2rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+
+.event-top {
+    font-size: 1.5rem;
+}
+
+.event-middle,
+.event-bottom {
+    font-size: 1rem;
+    color: #92949b;
+}
+
+.no-invites {
+    color: #92949b;
+}
+
+.right {
+    border-radius: 1em;
+    border: solid;
+    border-color: #2e2f32;
+    background-color: #2e2f32;
+    font-family: 'Lato', sans-serif;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    margin-right: 2em;
+    height: 45em;
+
+}
+
+.middle {
+    display: flex;
+    flex-direction: row;
+    font-size: 1rem;
+}
+
+.event-title {
+    text-align: center;
+    font-size: 3rem;
+}
+
+.event-organizer,
+.event-location,
+.event-date {
+    font-size: 1.5rem;
+}
+
+.event-description {
+    max-height: 8em;
+    font-size: 1.5rem;
+    overflow: auto;
+
+}
+
+.event-data {
+    margin: 2em;
+    width: 60%;
+}
+
+.chat {
+    display: flex;
+    flex-direction: column;
+    border-radius: 1em;
+    padding: 1em;
+    background-color: rgb(157, 156, 156);
+    margin: 2em;
+    width: 40%;
+}
+
+.chat-title {
+    text-align: center;
+    font-size: 3rem;
+}
+
+.messages {
+    overflow: auto;
+    margin-bottom: 2em;
+}
+
+.guest-message {
+    margin-bottom: 1.5em;
+    line-height: 0;
+}
+
+.guest-name,
+.user-name {
+    font-size: 0.76rem;
+}
+
+.user-message {
+    text-align: right;
+    line-height: 0;
+    margin-bottom: 1.5em;
+}
+
+.user-content {
+    display: inline-block;
+    border-radius: 10px;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    background-color: rgb(60, 60, 209);
+    width: fit-content;
+}
+
+.guest-content {
+    display: inline-block;
+    border-radius: 10px;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    background-color: #2e2f32;
+    width: fit-content;
+}
+
+.send-message {
+    text-align: right;
+    margin-top: auto;
+}
+
+.send-message input[type="text"] {
+    font-family: 'Lato';
+    color: white;
+    background-color: rgb(157, 156, 156);
+    border: solid;
+    border-color: rgb(60, 60, 209);
+    padding-left: 1em;
+    width: 50%;
+    height: 1.5em;
+    border-radius: 1em;
+    outline: none;
+
+}
+
+.send-message input[type="text"]::placeholder {
+    color: white;
+}
+
+.send-message input[type="submit"] {
+    font-family: 'Lato';
+    background-color: rgb(60, 60, 209);
+    color: white;
+    padding-left: 1em;
+    padding-right: 1em;
+    height: 2em;
+    border: none;
+    border-radius: 1em;
+}
+
+.ed {
+    margin-top: 5em;
+    display: flex;
+    justify-content: center;
+    gap: 10em;
+}
+
+#edit-event {
+
+    width: 10em;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    border-radius: 1em;
+    border: none;
+    background: green;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+    text-align: center;
+}
+
+#delete-event input[type="submit"] {
+    width: 10em;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    appearance: none;
+    border: none;
+    border-radius: 1em;
+    background: rgb(209, 69, 69);
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+    text-align: center;
+}
+
+.info-left {
+    margin-bottom: 0em;
+
+}
+
+.created-event-info {
+    vertical-align: top;
+    display: inline-block;
+    margin: 2em;
+    width: 40%;
+    height: 12em;
+    font-size: 1.5rem;
+    margin-bottom: 0em;
+
+}
+
+.event-form {
+    width: 100%;
+    height: 80%;
+}
+
+.description-info {
+    vertical-align: top;
+    display: inline-block;
+    font-size: 1.5rem;
+    margin-top: 2em;
+    margin-right: 2em;
+    width: 40%;
+    height: 100%;
+}
+
+.form-group textarea {
+    width: 100%;
+    height: 12em;
+    font-family: 'Lato';
+    font-size: 1rem;
+}
+
+.form-group input {
+    font-family: 'Lato';
+    font-size: 1rem;
+    width: 100%;
+    height: 2em;
+}
+
+.form-group p,
+.form-group-guests p {
+    margin-top: 0em;
+}
+
+.form-group-guests {
+    width: 40%;
+    vertical-align: top;
+    display: inline-block;
+    margin: 2em;
+    margin-top: 0em;
+    font-size: 1.5rem;
+    overflow: auto;
+    max-height: 6.7em;
+}
+
+.submit-button {
+    margin-top: 2em;
+    text-align: center;
+}
+
+.btn-primary {
+    width: 20em;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    border-radius: 1em;
+    border: none;
+    background: rgb(60, 60, 209);
+    color: inherit;
+    font: inherit;
+    font-size: 1.5em;
+    cursor: pointer;
+}
+
+.form-group-guests .checkbox-list input[type="checkbox"] {
+    font-size: 1px;
+}
+
+.friend-form input[type="text"] {
+    font-size: 1rem;
+    font-family: 'Lato';
+    color: black;
+    background-color: white;
+    border: none;
+    padding-left: 1em;
+    width: 40%;
+    height: 2em;
+    border-radius: 1em;
+    outline: none;
+}
+
+.friend-form button {
+    font-size: 1rem;
+    font-family: 'Lato';
+    background-color: rgb(60, 60, 209);
+    color: white;
+    padding-left: 1em;
+    padding-right: 1em;
+    height: 2em;
+    border: none;
+    border-radius: 1em;
+}
+
+.friend-item {
+    width: fit-content;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.remove-button {
+    margin-left: 2em;
+    font-size: 1rem;
+    font-family: 'Lato';
+    background-color: rgb(209, 60, 60);
+    color: white;
+    padding-left: 1em;
+    padding-right: 1em;
+    height: 2em;
+    border: none;
+    border-radius: 1em;
+    cursor: pointer;
+}
+
+.accept-button {
+    margin-left: 2em;
+    font-size: 1rem;
+    font-family: 'Lato';
+    background-color: green;
+    color: white;
+    padding-left: 1em;
+    padding-right: 1em;
+    height: 2em;
+    border: none;
+    border-radius: 1em;
+    cursor: pointer;
+}
+
+.add-friend {
+    width: 60%;
+    margin: 2em;
+}
+
+.add-friend-input,
+.current-friends,
+.received-friend-requests,
+.sent-friend-requests {
+    font-size: 1.5rem;
+}
+
+.current-friends {
+    max-height: 20em;
+    overflow-y: auto;
+}
+
+
+.received-friend-requests,
+.sent-friend-requests {
+    max-height: 15em;
+    overflow-y: auto;
+}
+
+.friend-item {
+    line-height: 1.5em;
+}
+
+.requests {
+    display: flex;
+    flex-direction: column;
+    border-radius: 1em;
+    padding: 1em;
+    background-color: rgb(157, 156, 156);
+    width: 40%;
+    margin: 2em;
+}
+
+.friends-title,
+.request-title {
+    text-align: center;
+    font-size: 3rem;
+}
+
+@media screen and (min-width: 2000px) {
+
+    .top,
+    .left,
+    .event-middle,
+    .event-bottom,
+    .middle {
+        font-size: 1.5rem;
+    }
+
+    .right {
+        height: 40em;
+    }
+
+    .event-title,
+    .friends-title,
+    .request-title,
+    .chat-title {
+        font-size: 4rem;
+    }
+
+    .event-top,
+    .event-organizer,
+    .event-location,
+    .event-date,
+    .event-description,
+    .received-friend-requests,
+    .sent-friend-requests,
+    .created-event-info,
+    .form-group-guests,
+    .description-info,
+    .add-friend-input,
+    .current-friends {
+        font-size: 2rem;
+    }
+
+    #edit-event,
+    #delete-event input[type="submit"] {
+        width: 12em;
+    }
+
+    .send-message input,
+    .form-group input,
+    .form-group textarea,
+    .friend-form input[type="text"],
+    .friend-form button,
+    .remove-button,
+    .accept-button {
+        font-size: 1.2rem;
+    }
+
+
+}

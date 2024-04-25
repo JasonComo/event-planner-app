@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <title>Planner</title>
+</head>
+<body>
+    <div class="top">
+        <div class="hello">
+            {% if user.is_authenticated %}
+                <h1>Hi {{ user.first_name }}!</h1>
+        </div>
+        <div class="button-like" id="create-event">
+            <h1><a href="{% url 'create_event' %}">Create Event</a></h1>
+        </div>
+        <div class="button-like" div id="friends">
+            <h1><a href="{% url 'view_friends' %}">Friends</a></h1>
+        </div>
+        <div class="button-like" div id="logout">
+            <h1><a href="{% url 'logout' %}">Log Out</a></h1>
+        </div>
+        {% else %}
+            <p>You are not logged in</p>
+            <a href="{% url 'login' %}">Log In</a>
+        {% endif %}
+    </div>
+
+    <div class="middle">
+        <div class="left">
+            <div class="event-invites-title">
+                <h1>Event Invites</h1>
+            </div>
+            <div class="event-invites">
+                <ul>
+                {% if invitations %}
+                    {% for invitation in invitations %}
+                        <li>
+                            <div class="event-left">                          
+                                <div class="event-top">{{ invitation.event.title }}</div>
+                                <div class="event-middle"> {{ invitation.sender.first_name }} {{ invitation.sender.last_name }}</div>
+                                <div class="event-bottom">{{ invitation.event.location }}</div> 
+                            </div>
+                            <div class="event-right">
+                                <form method="post" action="{% url 'accept_invitation' invitation.id %}">
+                                    {% csrf_token %}
+                                    <button type="submit" name="action" class="event-accept-button" value="accept">Accept</button>
+                                    <button type="submit" name="action" class="event-decline-button"value="decline">Decline</button>
+                                </form>
+                            </div>
+                        </li>
+                    {% endfor %}
+                {% else %}
+                    <div class="no-invites">No invitations available.</div>
+                {% endif %}
+                </ul>
+            </div>
+            <div class="attending-events-title">
+                <h1>Events</h1>
+            </div>
+            <div class="attending-events">
+                <ul>
+                    {% for event in events %}
+                        <li>
+                            <a href="{% url 'view_event' event.id %}">
+                                <div class="event-top">{{ event.title }} </div>
+                                <div class="event-middle"> {{ event.organizer.first_name }} {{ event.organizer.last_name }} </div>
+                                <div class="event-bottom">{{ event.location }}</div>
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+      
+        </div>
+        <div class="right">
+            {% if show_view_event %}
+                {% block view_content %}{% endblock %}
+            {% elif show_create_event_form %}
+                {% block create_content %}{% endblock %}
+            {% elif show_edit_event_form %}
+                {% block edit_content %}{% endblock %}
+            {% elif show_friends %}
+                {% block view_friends %}{% endblock %}
+            {% else %}
+                <div class="no-event-selected">
+                    <p>No Event Selected</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

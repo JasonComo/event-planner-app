@@ -1,0 +1,68 @@
+<!-- register.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/registration.css' %}">
+    <title>Sign Up</title>
+</head>
+<body>
+    <form method="post" class="registration-form">
+        {% csrf_token %}
+        <div class="registration-info">
+            <div class="register-title">
+                <h1>Sign Up</h1>
+            </div>
+            <div class="registration-form-group">
+                <label for="{{ form.username.id_for_label }}">Username:</label>
+                <p>{{ form.username }}</p>
+                <div class="error">
+                    {{ form.username.errors }}
+                </div>
+            </div>
+            <div class="names">
+                <div class="first-name">
+                    <label for="{{ form.first_name.id_for_label }}">First Name:</label>
+                    <p>{{ form.first_name }}</p>
+                    <div class="error">
+                        {{ form.first_name.errors }}
+                    </div>
+                </div>
+                <div class="last-name">
+                    <label for="{{ form.last_name.id_for_label }}">Last Name:</label>
+                    <p>{{ form.last_name }}</p>
+                    <div class="error">
+                        {{ form.last_name.errors }}
+                    </div>
+                </div>
+            </div>
+            <div class="passwords">
+                <div class="password1">
+                    <label for="{{ form.password1.id_for_label }}">Password:</label>
+                    <p>{{ form.password1 }}</p>
+                    <div class="error">
+                        {{ form.password1.errors }}
+                    </div>
+                </div>
+                <div class="password2">
+                    <label for="{{ form.password2.id_for_label }}">Confirm Password:</label>
+                    <p>{{ form.password2 }}</p>
+                    <div class="error">
+                        {{ form.password2.errors }}
+    
+                    </div>
+                </div>
+            </div>
+            <div class="registration-button-div">
+                <div class="button-like" div id="back-button-div">
+                    <a href="{% url 'login' %}" class="back-button">Back</a>
+                </div>
+                <button type="submit" class="registration-button">Register</button>
+            </div>
+        </div>
+    </form>    
+</body>
+</html>

@@ -1,0 +1,176 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+
+a {
+    text-decoration: none;
+    color: white;
+
+}
+
+body {
+    background-color: #23252b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+
+button,
+.button-like {
+    transition: transform 0.3s ease-in-out;
+
+}
+
+button,
+.button-like:hover {
+    transform: scale(1.05)
+}
+
+.registration-form {
+    color: white;
+    border-radius: 1em;
+    background-color: #2e2f32;
+    font-family: 'Lato';
+    max-width: 35%;
+    margin: 0 auto;
+    padding: 20px;
+
+
+}
+
+.registration-form label {
+    font-size: 1.25rem;
+
+}
+
+.registration-info {
+    margin: 2em;
+}
+
+.registration-form input {
+    width: 100%;
+    height: 2em;
+}
+
+.registration-form h1 {
+    font-weight: normal;
+}
+
+
+.names {
+    margin-top: 4em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.passwords {
+    margin-top: 4em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.register-title {
+    text-align: center;
+}
+
+.registration-button-div {
+
+    margin-bottom: 2em;
+    margin-top: 4em;
+    display: flex;
+    justify-content: center;
+    gap: 4em;
+    align-items: center;
+
+}
+
+
+.back-button {
+    text-align: center;
+    padding: 0.5em 2em;
+    border-radius: 1em;
+    border: none;
+    background: rgb(60, 60, 209);
+    color: white;
+    font: inherit;
+    font-size: 1.5em;
+    cursor: pointer;
+}
+
+.registration-button {
+    text-align: center;
+    padding: 0.5em 1.25em;
+    border-radius: 1em;
+    border: none;
+    background: rgb(60, 60, 209);
+    color: white;
+    font: inherit;
+    font-size: 1.5em;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+
+.registration-button:hover {
+    transform: scale(1.09);
+
+}
+
+.registration-form-group,
+.first-name,
+.last-name,
+.password1,
+.password2 {
+    width: 45%;
+    height: 8em;
+    max-height: 8em;
+    max-width: 15em;
+
+}
+
+.error {
+    width: 15em;
+    max-height: 8em;
+    max-width: 15em;
+    overflow-y: auto;
+    overflow-x: auto;
+}
+
+.errorlist {
+    max-width: 15em;
+    text-align: left;
+    color: white;
+    margin: 0;
+    font-size: 0.75rem;
+    padding: 0;
+
+}
+
+.errorlist li {
+    max-width: 15em;
+    margin-left: 2em;
+    padding: 0;
+
+}
+
+
+@media screen and (min-width: 2000px) {
+    .register-title h1 {
+        font-size: 2.5rem;
+    }
+
+    .registration-form-group label,
+    .names label,
+    .passwords label {
+        font-size: 1.6rem;
+    }
+
+    .back-button,
+    .registration-button {
+        font-size: 1.85rem;
+    }
+
+
+}

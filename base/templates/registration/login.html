@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+  <title>Login</title>
+</head>
+<body>
+  <form method="post" class="login-form">
+    {% csrf_token %}
+      <div class="login-info">
+        <div class="login-title">
+          <h1>Login</h1>
+        </div>
+        <div class="login-username">
+          <label for="{{ form.username.id_for_label }}">Username:</label>
+          {{ form.username }}
+        </div>
+
+        <div class="login-password">
+          <label for="{{ form.password.id_for_label }}">Password:</label>
+          {{ form.password }}
+        </div>
+        {% if form.errors %}
+        <div class="error-message">
+          {% if form.errors.username %}
+            {% for error in form.errors.username %}
+              <p>{{ error }}</p>
+            {% endfor %}
+          {% else %}
+            Please enter a correct username and password.
+          {% endif %}
+        </div>
+        {% endif %}
+        <div class="login-button-div">
+          <button type="submit" class="login-button">Login</button>
+          <a href="{% url 'register' %}" class="register-button">Register</a>
+        </div>
+      
+      </div>
+  </form>
+</body>
+</html>
